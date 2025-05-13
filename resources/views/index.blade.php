@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Service Reservation') }}</title>
-</head>
-
-<body>
-
-    @yield('content')
-
-</body>
-
-</html>
+@section('content')
+    Welcome, {{ Auth::user()->name ?? 'Guest' }}
+@endsection
