@@ -21,6 +21,15 @@ Route::middleware(['guest'])
 
 Route::middleware(['auth'])
     ->group(function () {
+        // ========= ADMINS ========= //
+        Route::prefix('dashboard')
+            ->name('admins.')
+            ->middleware(['is_admin'])
+            ->group(function () {
+                Route::view('/', 'admins.dashboard')
+                    ->name('dashboard');
+            });
+
         Route::delete('/logout', [LoginController::class, 'logout'])
             ->name('logout');
     });

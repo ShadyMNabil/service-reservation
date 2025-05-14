@@ -8,6 +8,10 @@
         @endguest
 
         @auth
+            @if (Auth::user()->is_admin)
+                <li><a href="{{ route('admins.dashboard') }}">Dashboard</a></li>
+            @endif
+
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 @method('DELETE')

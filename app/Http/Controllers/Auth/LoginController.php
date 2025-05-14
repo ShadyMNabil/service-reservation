@@ -41,6 +41,12 @@ class LoginController extends Controller
             ])->onlyInput('email');
         }
 
+        $request->session()->regenerate();
+
+        if (Auth::user()->is_admin) {
+            return to_route('admins.dashboard');
+        }
+
         return redirect()->intended();
     }
 
